@@ -1,0 +1,5 @@
+version: "2.0"
+forms:
+  newsletter_form:
+    email:
+    - type: from_text

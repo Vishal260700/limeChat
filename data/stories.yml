@@ -1,0 +1,174 @@
+version: "2.0"
+
+stories:
+
+  # Greetings
+  - story: Greetings
+    steps:
+    - intent: greet
+    - action: utter_greet
+
+  # check in and check out
+  - story: faq check in time affirm
+    steps:
+    - intent: faq_check_in_time
+    - action: utter_check_in_time
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+
+  - story: faq check in time deny
+    steps:
+    - intent: faq_check_in_time
+    - action: utter_check_in_time
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+
+  - story: faq check out time affirm
+    steps:
+    - intent: faq_check_out_time
+    - action: utter_check_out_time
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+    
+  - story: faq check out time deny
+    steps:
+    - intent: faq_check_out_time
+    - action: utter_check_out_time
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+  
+  # Cancel reservation
+  - story: faq cancel reservation affirm
+    steps:
+    - intent: faq_cancel_reservation
+    - action: utter_cancel_reservation
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+
+  - story: faq cancel reservation deny
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_cancel_reservation
+    - action: utter_cancel_reservation
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+  
+  # Cancel reservation policy
+  - story: faq cancellation policy affirm
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_cancellation_policy
+    - action: utter_cancellation_policy
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+  
+  - story: faq cancellation policy deny
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_cancellation_policy
+    - action: utter_cancellation_policy
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+  
+  # Resturant Check
+  - story: faq have restaurant path affirm
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_have_restaurant
+      entities:
+      - location: restaurant
+    - action: utter_have_restaurant
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+  
+  - story: faq have restaurant path deny
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_have_restaurant
+      entities:
+      - location: restaurant
+    - action: utter_have_restaurant
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+  
+  # Breakfast Check
+  - story: faq breakfast availability affirm
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_breakfast_avail
+    - action: utter_breakfast_avail
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+  
+  - story: faq breakfast availability deny
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_breakfast_avail
+    - action: utter_breakfast_avail
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+  
+  # Breakfast timings
+  - story: faq breakfast time affirm
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_breakfast_time
+    - action: utter_breakfast_time
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+  
+  - story: faq breakfast time deny
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_breakfast_time
+    - action: utter_breakfast_time
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+  
+  # Resturant path
+  - story: faq restaurant time path affirm
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_restaurant_time
+      entities:
+      - location: restaurant
+    - action: utter_restaurant_time
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+
+  - story: faq restaurant time path deny
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: faq_restaurant_time
+      entities:
+      - location: restaurant
+    - action: utter_restaurant_time
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
