@@ -7,6 +7,145 @@ stories:
     steps:
     - intent: greet
     - action: utter_greet
+  
+  # ActionsPy File based Interactions
+  - story: book room affirm path
+    steps:
+    - intent: book_room
+      entities:
+      - location: room
+    - action: form_book_room
+    - active_loop: form_book_room
+    - active_loop: null
+    - action: action_reset_slots
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+
+  - story: book room deny path
+    steps:
+    - intent: book_room
+      entities:
+      - location: room
+    - action: form_book_room
+    - active_loop: form_book_room
+    - active_loop: null
+    - action: action_reset_slots
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+
+  - story: book number room path affirm 1
+    steps:
+    - intent: book_number_room
+      entities:
+      - location: room
+      - number: '1'
+    - slot_was_set:
+      - number: '1'
+    - action: form_book_room_number
+    - active_loop: form_book_room_number
+    - active_loop: null
+    - action: action_reset_slots
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+
+  - story: book number room path deny 1
+    steps:
+    - intent: book_number_room
+      entities:
+      - location: room
+      - number: '1'
+    - slot_was_set:
+      - number: '1'
+    - action: form_book_room_number
+    - active_loop: form_book_room_number
+    - active_loop: null
+    - action: action_reset_slots
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+
+  - story: book number room path affirm 2
+    steps:
+    - intent: book_number_room
+      entities:
+      - location: room
+      - number: '2'
+    - slot_was_set:
+      - number: '2'
+    - action: form_book_room_number
+    - active_loop: form_book_room_number
+    - active_loop: null
+    - action: action_reset_slots
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+
+  - story: book number room path deny 2
+    steps:
+    - intent: book_number_room
+      entities:
+      - location: room
+      - number: '2'
+    - slot_was_set:
+      - number: '2'
+    - action: form_book_room_number
+    - active_loop: form_book_room_number
+    - active_loop: null
+    - action: action_reset_slots
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+
+  - story: clean room now path affirm
+    steps:
+    - intent: clean_room
+      entities:
+      - location: room
+    - action: utter_clean_room
+    - intent: clean_room_now
+    - action: utter_clean_room_now
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+
+  - story: clean room now path deny
+    steps:
+    - intent: clean_room
+      entities:
+      - location: room
+    - action: utter_clean_room
+    - intent: clean_room_now
+    - action: utter_clean_room_now
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
+
+  - story: clean room relative path affirm
+    steps:
+    - intent: clean_room
+      entities:
+      - location: room
+    - action: utter_clean_room
+    - intent: clean_room_relative
+    - action: utter_clean_room_relative
+    - action: utter_is_that_all
+    - intent: affirm
+    - action: utter_goodbye
+
+  - story: clean room relative path deny
+    steps:
+    - intent: clean_room
+      entities:
+      - location: room
+    - action: utter_clean_room
+    - intent: clean_room_relative
+    - action: utter_clean_room_relative
+    - action: utter_is_that_all
+    - intent: deny
+    - action: utter_deny_message
 
   # check in and check out
   - story: faq check in time affirm
@@ -87,8 +226,6 @@ stories:
     - intent: greet
     - action: utter_greet
     - intent: faq_have_restaurant
-      entities:
-      - location: restaurant
     - action: utter_have_restaurant
     - action: utter_is_that_all
     - intent: affirm
@@ -99,8 +236,6 @@ stories:
     - intent: greet
     - action: utter_greet
     - intent: faq_have_restaurant
-      entities:
-      - location: restaurant
     - action: utter_have_restaurant
     - action: utter_is_that_all
     - intent: deny
@@ -154,8 +289,6 @@ stories:
     - intent: greet
     - action: utter_greet
     - intent: faq_restaurant_time
-      entities:
-      - location: restaurant
     - action: utter_restaurant_time
     - action: utter_is_that_all
     - intent: affirm
@@ -166,8 +299,6 @@ stories:
     - intent: greet
     - action: utter_greet
     - intent: faq_restaurant_time
-      entities:
-      - location: restaurant
     - action: utter_restaurant_time
     - action: utter_is_that_all
     - intent: deny

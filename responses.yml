@@ -1,13 +1,16 @@
 version: "2.0"
 responses:
 
+    # Extra layer
     utter_greet:
     - text: Hey! How can I help you?
     - text: Hey there! How can I help you, today?
 
+    # To work on
     utter_submit:
     - text: 'Your room(s) have been booked. Number of {room_type} rooms booked : {number}'
 
+    # To work on
     utter_ask_number:
     - buttons:
         - payload: /num_rooms{"number":"1"}
@@ -16,6 +19,7 @@ responses:
         title: '2'
         text: Select the number of rooms you want to book
 
+    # To work on
     utter_ask_room_type:
     - buttons:
         - payload: /type_rooms{"room_type":"Simple"}
@@ -24,77 +28,99 @@ responses:
         title: Deluxe
         text: Select from one of the room types
 
+    # To work on
     utter_simple_room_image:
     - image: https://media-cdn.tripadvisor.com/media/photo-s/01/59/93/8d/simple-room.jpg
         text: 'Simple room: '
 
+    # To work on
     utter_deluxe_room_image:
     - image: https://www.mhotel.in/img/super/01.jpg
         text: 'Deluxe room: '
 
+    # To work on
     utter_clean_room:
     - text: When do you want to clean your room?
 
+    # To work on
     utter_clean_room_now:
     - text: Someone is being sent to your room ASAP!
 
+    # To work on
     utter_clean_room_relative:
     - text: Someone will be sent at your required time!
 
+    # Done
     utter_check_in_time:
     - text: Check-in time starts at 4 PM. Minimum check-in age is 21. Please contact
         the reception for early check-in requests.
 
+    # Done
     utter_check_out_time:
     - text: Check-out time is 11 AM. Please contact the reception for late checkout
         requests.
 
+    # Done
     utter_cancel_reservation:
     - text: To cancel a reservation, select the “Reservations” link from the homepage.
     - text: On the Reservations page, under the heading ‘View, Change or Cancel a Reservation,’enter
         your confirmation number, and either the last name on the reservation or the
         last four digits of the credit card used to make the reservation.
 
+    # Done
     utter_cancellation_policy:
     - text: The booking deposit is refundable if the cancellation occurs at least 15
         days before arrival. For cancellations made after this limit, a penalty will
         be imposed based on the cancellation policy.
 
+    # Done
     utter_have_restaurant:
     - text: Yes, the hotel has a restaurant called the Zephyr Bar. With our menu we
         strive to reflect the historic art and the spirit of our neighborhood by offering
         a glimpse into what makes our area unique.
 
+    # Done
     utter_breakfast_avail:
     - text: The hotel provides its guests with a free made-to-order breakfast each morning.
 
+    # Done
     utter_breakfast_time:
     - text: Monday through Friday breakfast is 6 am to 9 am. On Saturday and Sunday,
         we are open from 7 am to 10:30 am.
 
+    # Done
     utter_restaurant_time:
     - text: Our restaurant serves a dazzling 24-hour menu.
 
+    # Done
     utter_is_that_all:
     - text: Would that be all?
 
+    # Done
     utter_goodbye:
     - text: Ok then! Have a nice day!
 
+    # Done
     utter_deny_message:
     - text: How can I help you?
+
+    # Yet to integrate
     utter_fallback_message:
     - text: Sorry, I did not understand. Can you rephrase?
 
+    # Done
     utter_cheer_up:
     - text: "Here is something to cheer you up:"
         image: "https://i.imgur.com/nGF1K8f.jpg"
 
+    # Done
     utter_did_that_help:
     - text: "Did that help you?"
 
+    # Done
     utter_happy:
     - text: "Great, carry on!"
 
+    # Done
     utter_iamabot:
     - text: "I am a bot, powered by Rasa."

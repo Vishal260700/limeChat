@@ -99,6 +99,92 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
+
+- intent: book_room
+  examples: |
+    - i want a book a [room](location) for my stay
+    - I want to book a [room](location)
+    - i want to book a [room](location)
+    - i would like to book a [room](location)
+    - need a [room](location)
+    - can you book a [room](location)?
+    - book [room](location)
+    - book the [room](location)
+    - book a [room](location)
+    - Book a [Room](location)
+    - Book [room](location) for my stay
+    - book [rooms](location)
+    - book the [rooms](location)
+    - book [room](location)
+    - book the [room](location)
+    - book a [room](location)
+    - Book a [Room](location)
+    - Book [room](location)
+    - book [rooms](location)
+    - book the [rooms](location)
+
+- intent: book_number_room
+  examples: |
+    - i want to book (2)[number] [rooms](location) for my stay
+    - i would like to book [1](number) [room](location)
+    - I want to book [2](number) [rooms](location)
+    - book [2](number) [rooms](location) for me
+    - need [1](number) [room](location)
+    - book [1](number) [room](location)
+    - book [2](number) [rooms](location)
+    - need [2](number) [rooms](location) to book
+
+- intent: num_rooms
+  examples: |
+    - [2](number)
+    - [1](number)
+
+
+- intent: type_rooms
+  examples: |
+    - [Simple](room_type)
+    - [Deluxe](room_type)
+
+- intent: clean_room
+  examples: |
+    - can you ask for someone to clean the clean the [room](location)?
+    - request for [room](location) clean
+    - [room](location) cleaning
+    - i want to have my [room](location) cleaned
+    - could you send someone to clean the [room](location)
+    - send someone to clean the [room](location)
+    - need someone to clean the [room](location)
+    - i would like to request for [room](location) cleaning
+    - request [room](location) cleaning service
+    - can you send someone to clean the [room](location)?
+    - my [room](location) needs to be cleaned
+    - please send someone to clean my [room](location)
+    - i would like to have my [room](location) cleaned
+
+- intent: clean_room_now
+  examples: |
+    - urgently
+    - now
+    - could you send someone right now?
+    - send someone right now
+    - required now
+    - needed now
+    - send him now
+    - it is urgent
+    - please send someone right now
+    - the requirement is urgent
+    - can you send someone as soon as possible
+    - as soon as possible
+
+- intent: clean_room_relative
+  examples: |
+    - could you send someone after [2](number) hours?
+    - send someone after [3](number) hours
+    - schedule it after [5](number) hours
+    - send him around [2](number) hours later
+    - please send in [2](number) hours
+
+
 # Done
 - intent: faq_check_in_time
   examples: |
@@ -160,18 +246,18 @@ nlu:
 
 - intent: faq_have_restaurant
   examples: |
-    - does the hotel have a [restaurant](location)?
-    - do you have a [restaurant](location)?
-    - is there a [restaurant](location)?
-    - is there a [restaurant](location) in the hotel?
-    - tell me about the [restaurant](location)
-    - can you tell me about any [restaurant](location) in the hotel?
-    - are there [restaurants](location) in the hotel?
-    - number of [restaurants](location)?
-    - can i find [restaurants](location) here?
-    - i heard there is a [restaurant](location) also
-    - inform me about the [restaurant](location)
-    - where is [restaurant](location)?
+    - does the hotel have a restaurant?
+    - do you have a restaurant?
+    - is there a restaurant?
+    - is there a restaurant in the hotel?
+    - tell me about the restaurant
+    - can you tell me about any restaurant in the hotel?
+    - are there restaurant in the hotel?
+    - number of restaurant?
+    - can i find restaurant here?
+    - i heard there is a restaurant also
+    - inform me about the restaurant
+    - where is restaurant?
 
 - intent: faq_breakfast_avail
   examples: |
@@ -202,15 +288,15 @@ nlu:
 
 - intent: faq_restaurant_time
   examples: |
-    - what are timings of your [restaurant](location)?
-    - what is the time of the [restaurant](location)?
-    - timings of [restaurant](location)
-    - [restaurant](location) open time
-    - [restaurant](location) open timings
-    - [restaurant](location) timings
-    - till when [restaurant](location) remain open?
-    - till what time will the [restaurant](location) remain open?
-    - can you share the timings of [restaurant](location)?
+    - what are timings of your restaurant?
+    - what is the time of the restaurant?
+    - timings of restaurant
+    - restaurant open time
+    - restaurant open timings
+    - restaurant timings
+    - till when restaurant remain open?
+    - till what time will the restaurant remain open?
+    - can you share the timings of restaurant?
 
 - synonym: room
   examples: |

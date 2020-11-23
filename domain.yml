@@ -9,6 +9,7 @@ intents:
 - affirm
 - deny
 - goodbye
+# To do
 - book_room
 - num_rooms
 - type_rooms
@@ -16,6 +17,7 @@ intents:
 - clean_room
 - clean_room_now
 - clean_room_relative
+# Till here
 - mood_great
 - mood_unhappy
 - bot_challenge
@@ -28,15 +30,22 @@ intents:
 - faq_breakfast_time
 - faq_restaurant_time
 
+entities:
+- number
+- location
+- room_type
+
 slots:
-  email:
+  number:
+    type: unfeaturized
+    influence_conversation: false
+  room_type:
     type: unfeaturized
     influence_conversation: false
 
 forms:
-  newsletter_form:
-    email:
-    - type: from_text
+ - form_book_room
+ - form_book_room_number
 
 responses:
 
@@ -48,21 +57,21 @@ responses:
   - text: 'Your room(s) have been booked. Number of {room_type} rooms booked : {number}'
 
   utter_ask_number:
-  - buttons:
+  - text: How many rooms would you like to book?
+    buttons:
     - payload: /num_rooms{"number":"1"}
       title: '1'
     - payload: /num_rooms{"number":"2"}
-      title: '2'
-    text: Select the number of rooms you want to book
+      title: '2'  
 
   utter_ask_room_type:
-  - buttons:
+  - text: Select from one of the room types
+    buttons:
     - payload: /type_rooms{"room_type":"Simple"}
       title: Simple
     - payload: /type_rooms{"room_type":"Deluxe"}
       title: Deluxe
-    text: Select from one of the room types
-
+    
   utter_simple_room_image:
   - image: https://media-cdn.tripadvisor.com/media/photo-s/01/59/93/8d/simple-room.jpg
     text: 'Simple room: '
@@ -140,6 +149,8 @@ responses:
   - text: "I am Ultron, powered by Rasa."
 
 actions:
+- action_reset_slots
+- action_my_fallback
 - utter_greet
 - utter_submit
 - utter_check_in_time
