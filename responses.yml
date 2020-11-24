@@ -40,11 +40,11 @@ responses:
 
     # To work on
     utter_clean_room:
-    - text: When do you want to clean your room?
+    - text: When should I arrange for a cleaning?
 
     # To work on
     utter_clean_room_now:
-    - text: Someone is being sent to your room ASAP!
+    - text: Sure, I will send someone to your room right away.
 
     # To work on
     utter_clean_room_relative:

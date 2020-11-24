@@ -58,11 +58,6 @@ responses:
 
   utter_ask_number:
   - text: How many rooms would you like to book?
-    buttons:
-    - payload: /num_rooms{"number":"1"}
-      title: '1'
-    - payload: /num_rooms{"number":"2"}
-      title: '2'  
 
   utter_ask_room_type:
   - text: Select from one of the room types
@@ -81,10 +76,10 @@ responses:
     text: 'Deluxe room: '
 
   utter_clean_room:
-  - text: When do you want to clean your room?
+  - text: When should I arrange for a cleaning?
 
   utter_clean_room_now:
-  - text: Someone is being sent to your room ASAP!
+  - text: Sure, I will send someone to your room right away.
 
   utter_clean_room_relative:
   - text: Someone will be sent at your required time!
