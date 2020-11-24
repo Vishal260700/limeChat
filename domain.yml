@@ -34,6 +34,7 @@ entities:
 - number
 - location
 - room_type
+- book_time
 
 slots:
   number:
@@ -42,10 +43,14 @@ slots:
   room_type:
     type: unfeaturized
     influence_conversation: false
+  book_time:
+    type: unfeaturized
+    influence_conversation: false
 
 forms:
  - form_book_room
  - form_book_room_number
+ - form_book_time_relative
 
 responses:
 
@@ -54,26 +59,18 @@ responses:
   - text: Hey there! How can I help you, today?
 
   utter_submit:
-  - text: 'Your room(s) have been booked. Number of {room_type} rooms booked : {number}'
+  - text: You have chosen to book {number} {room_type} rooms
 
   utter_ask_number:
   - text: How many rooms would you like to book?
 
   utter_ask_room_type:
-  - text: Select from one of the room types
+  - text: What type of room would you want to book?
     buttons:
-    - payload: /type_rooms{"room_type":"Simple"}
+    - payload: /type_rooms{"room_type":"simple"}
       title: Simple
-    - payload: /type_rooms{"room_type":"Deluxe"}
+    - payload: /type_rooms{"room_type":"deluxe"}
       title: Deluxe
-    
-  utter_simple_room_image:
-  - image: https://media-cdn.tripadvisor.com/media/photo-s/01/59/93/8d/simple-room.jpg
-    text: 'Simple room: '
-
-  utter_deluxe_room_image:
-  - image: https://www.mhotel.in/img/super/01.jpg
-    text: 'Deluxe room: '
 
   utter_clean_room:
   - text: When should I arrange for a cleaning?
@@ -82,7 +79,8 @@ responses:
   - text: Sure, I will send someone to your room right away.
 
   utter_clean_room_relative:
-  - text: Someone will be sent at your required time!
+  - text: Sure, I have scheduled a cleaning for {book_time} pm today.
+  
 
   utter_check_in_time:
   - text: Check-in time starts at 4 PM. Minimum check-in age is 21. Please contact

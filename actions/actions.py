@@ -1,57 +1,27 @@
 from typing import Any, Text, Dict, List, Union
-
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet, UserUtteranceReverted
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormAction
 
-def repeat(tracker, dispatcher):
-    user_ignore_count = 2
-    count = 0
-    tracker_list = []
+import datetime
 
-    while user_ignore_count > 0:
-        event = tracker.events[count].get('event')
-        if event == 'user':
-            user_ignore_count = user_ignore_count - 1
-        if event == 'bot':
-            tracker_list.append(tracker.events[count])
-        count = count - 1
-
-    tracker_list.reverse()
-    i = len(tracker_list) - 1
-
-    while i >= 0:
-        data = tracker_list[i].get('data')
-        if data:
-            if "buttons" in data:
-                dispatcher.utter_message(text=tracker_list[i].get('text'), buttons=data["buttons"])
-            else:
-                dispatcher.utter_message(text=tracker_list[i].get('text'))
-            break
-        i -= 1
 
 class BookRoomInfo(FormAction):
-    def name(self) -> Text:
+    def name(self):
         return "form_book_room"
 
     @staticmethod
-    def required_slots(tracker: Tracker) -> List[Text]:
+    def required_slots(tracker: Tracker):
         return ["number", "room_type"]
 
-    def submit(
-            self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any],
-    ) -> List[Dict]:
-
-        # utter submit template
+    def submit(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]):
+        # Submit 
         dispatcher.utter_message(template="utter_submit", number=tracker.get_slot('number'),
                                  room_type=tracker.get_slot('room_type'))
         return []
 
-    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+    def slot_mappings(self):
 
         return {
             "number": self.from_entity(entity="number", intent='num_rooms'),
@@ -59,29 +29,42 @@ class BookRoomInfo(FormAction):
         }
 
 class BookRoomNumberInfo(FormAction):
-    def name(self) -> Text:
+    def name(self):
         return "form_book_room_number"
 
     @staticmethod
-    def required_slots(tracker: Tracker) -> List[Text]:
+    def required_slots(tracker: Tracker):
         return ["room_type"]
 
-    def submit(
-            self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any],
-    ) -> List[Dict]:
-
-        # utter submit template
+    def submit(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]):
+        # Submit
         dispatcher.utter_message(template="utter_submit", 
                                 room_type=tracker.get_slot('room_type'))
         return []
 
-    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+    def slot_mappings(self):
 
         return {
             "room_type": self.from_entity(entity="room_type", intent="type_rooms")
+        }
+
+class BookTimeRelativeInfo(FormAction):
+    def name(self):
+        return "form_book_time_relative"
+    
+    @staticmethod
+    def required_slots(tracker : Tracker):
+        return ["number"]
+    
+    def submit(self, dispatcher : CollectingDispatcher, tracker : Tracker, domain: Dict[Text, Any]):
+        # Submit
+        dispatcher.utter_message(template = "utter_clean_room_relative",
+                                 book_time = tracker.get_slot('number'))
+        return []
+    
+    def slot_mappings(self):
+        return {
+            "book_time": self.from_entity(entity = "number", intent = "clean_room_relative")
         }
 
 class ResetSlots(Action):
@@ -97,6 +80,5 @@ class MyFallbackAction(Action):
         return "action_my_fallback"
 
     def run(self, dispatcher, tracker, domain):
-        dispatcher.utter_template("utter_fallback_message", tracker)
-        # repeat(tracker, dispatcher)        
+        dispatcher.utter_template("utter_fallback_message", tracker)       
         return [UserUtteranceReverted()]

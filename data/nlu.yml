@@ -125,7 +125,7 @@ nlu:
 
 - intent: book_number_room
   examples: |
-    - i want to book (2)[number] [rooms](location) for my stay
+    - i want to book [2](number) [rooms](location) for my stay
     - i would like to book [1](number) [room](location)
     - I want to book [2](number) [rooms](location)
     - book [2](number) [rooms](location) for me
@@ -178,11 +178,12 @@ nlu:
 
 - intent: clean_room_relative
   examples: |
-    - could you send someone after [2](number) hours?
-    - send someone after [3](number) hours
-    - schedule it after [5](number) hours
-    - send him around [2](number) hours later
-    - please send in [2](number) hours
+    - could you send someone after [2](book_time) hours?
+    - send someone after [3](book_time) hours
+    - schedule it after [5](book_time) hours
+    - send him around [2](book_time) hours later
+    - please send in [2](book_time) hours
+    - after maybe [12](book_time) hours
 
 
 # Done
@@ -202,6 +203,10 @@ nlu:
     - could you tell me when to check-in?
     - when check in?
     - i want to check in. can you tell me check in timing?
+    - what are checkins?
+    - what are checkins
+    - check ins
+    - checkins
 
 # Done
 - intent: faq_check_out_time
@@ -220,6 +225,10 @@ nlu:
     - could you tell me when to check-out?
     - when check in?
     - i want to check out. can you tell me check out timings?
+    - what are checkouts?
+    - what are checkouts
+    - check outs
+    - checkouts
 
 - intent: faq_cancel_reservation
   examples: |

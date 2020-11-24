@@ -17,7 +17,7 @@ responses:
         title: '1'
         - payload: /num_rooms{"number":"2"}
         title: '2'
-        text: Select the number of rooms you want to book
+        text: What type of room would you want to book?
 
     # To work on
     utter_ask_room_type:
